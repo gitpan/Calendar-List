@@ -1,9 +1,9 @@
-package Init;
+package TestData;
 use warnings;
 use strict;
 
 ###########################################################################
-# name: init.pm
+# name: TestData.pm
 # desc: Preprocessed variables for tests
 ###########################################################################
 
@@ -20,7 +20,7 @@ require Exporter;
 	%tests %expected02 %expected03
 	%exts %monthtest %daytest
 	@monthlists
-	@format01 @format02
+	@format01 @format02 @format03
     $on_unix
 ) ] );
 
@@ -632,6 +632,23 @@ our @format02 = (
 		result => 'Monday, 13th September 1965' },
 	{	array => [ 'Monday, 13th September 1965', 'DAY, DDEXT MONTH YYYY', 'YYYY-MM-DD' ],
 		result => '1965-09-13' },
+);
+
+our @format03 = (
+	{	array => [ 'EPOCH', 13,9,1965 ],
+		result => '-1' },
+	{	array => [ 'EPOCH', 24,3,1976 ],
+		result => '196516800' },
+	{	array => [ 'EPOCH', 3,11,2000 ],
+		result => '973252800' },
+	{	array => [ 'EPOCH', 1,1,1970 ],
+		result => '43200' },
+	{	array => [ 'EPOCH', 1,1,1900 ],
+		result => '-1' },
+	{	array => [ 'EPOCH', 5,7,2056 ],
+		result => '-1' },
+	{	array => [ 'EPOCH', 1,1,2038 ],
+		result => '-1' },
 );
 
 __END__
